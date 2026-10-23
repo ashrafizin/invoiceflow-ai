@@ -37,7 +37,7 @@ def extract_invoice(pdf_bytes):
     invoice_no = get(r"Invoice\s*(?:Number|No\.?)\s*[:#]?\s*([A-Z0-9-]+)")
     vendor = get(r"Vendor\s*[:#]?\s*(.+)")
     po_no = get(r"(?:Purchase\s+Order|PO(?:\s*(?:Number|No\.?))?)\s*[:#]?\s*(PO-[A-Z0-9-]+)")
-    total_raw = get(r"(?:Grand\s*)?Total(?:\s+Amount)?\s*[:₹ ]*\s*₹?\s*([0-9,]+(?:\.\d{1,2})?)")
+    total_raw = get(r"(?:Grand\s*)?Total(?:\s+Amount)?\s*[:₹ ]*\s*(?:INR|Rs\.?|₹)?\s*([0-9,]+(?:\.\d{1,2})?)")
     currency = get(r"Currency\s*[:#]?\s*([A-Z]{3})") or "INR"
 
     try:
